@@ -25,8 +25,20 @@ public class RestSericeTest {
 		vehicle2.setVehicleType("Truck");
 		vehicle2.setVehiclesMake("Eicher");
 		
+		Vehicle vehicle3 = new Vehicle();
+		vehicle3.setId("3");
+		vehicle3.setVehicleType("Airplane");
+		vehicle3.setVehiclesMake("Airbus");
+		
+		Vehicle vehicle4 = new Vehicle();
+		vehicle4.setId("4");
+		vehicle4.setVehicleType("Boat");
+		vehicle4.setVehiclesMake("Swanson");
+		
 		VehiclesMap.put("1", vehicle1);
 		VehiclesMap.put("2", vehicle2);
+		VehiclesMap.put("3", vehicle3);
+		VehiclesMap.put("4", vehicle4);
 	}
 
 @Test
@@ -46,6 +58,24 @@ public void testvehicleInfoGet2() {
 		.body("vehicleType", equalTo("Truck"))
 		.body("VehiclesMake", equalTo("Eicher"));
 	}
+@Test
+public void testvehicleInfoGet3() {
+	given().when().get("/RestCRUDoperations/rest/VehicleInfo/3")
+		.then()
+		.body("id", equalTo(2))
+		.body("vehicleType", equalTo("Boat"))
+		.body("VehiclesMake", equalTo("Swanson"));
+	}
+
+@Test
+public void testvehicleInfoGet4() {
+	given().when().get("/RestCRUDoperations/rest/VehicleInfo/4")
+		.then()
+		.body("id", equalTo(2))
+		.body("vehicleType", equalTo("Boat"))
+		.body("VehiclesMake", equalTo("Swanson"));
+	}
+
 @Test
 public void testvehicleInfoPost() {
 	given()
